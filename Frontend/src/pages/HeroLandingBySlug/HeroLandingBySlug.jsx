@@ -59,7 +59,7 @@ const HeroLandingBySlug = () => {
     );
   }
 
-  console.log(hero);
+  // console.log(hero);
 
   if (currentPage === "landing") {
     return (
@@ -74,46 +74,55 @@ const HeroLandingBySlug = () => {
           <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/70 to-black/50"></div>
         </div>
 
-        <div className="grid grid-cols-2 space-x-2 md:gap-6 max-w-4xl w-full">
-          {(hero?.cards || []).slice(0, 2).map((card, idx) => (
-            <div
-              key={idx}
-              className="bg-black/80 backdrop-blur-md rounded-2xl px-3 py-6 md:px-8 md:py-8 border border-gray-800 hover:border-blue-500 transition-all transform hover:scale-105 hover:shadow-2xl"
-            >
-              <div className="flex items-center justify-center mb-2 md:mb-4">
-                <div className="bg-green-700 text-white px-2 md:px-4 py-1 rounded-full text-[10px] md:text-xs lg:text-sm md:font-semibold">
-                  {card.badge}
-                </div>
-              </div>
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold  md:mb-6 animate-fade-in text-white">
+            {hero?.title}
+          </h1>
+          <p className="text-base md:text-lg lg:text-xl mb-6 md:mb-12 text-gray-200">
+             {hero?.subtitle}
+          </p>
 
-              <p className="text-gray-300 mb-2 md:mb-6 text-sm lg:text-base">
-                {card.description}
-              </p>
-
-              <div className="mb-2 md:mb-6 text-center">
-                <span className="text-2xl md:text-3xl lg:text-5xl font-bold text-white">
-                  {card.price ? `$${card.price}` : ""}
-                </span>
-                <span className="text-xl md:text-2xl align-top">*</span>
-              </div>
-
-              <p className="text-sm md:text-base text-gray-400 mb-2 md:mb-6 text-center">
-                {card.duration}
-              </p>
-
-              <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-8 text-center">
-                {card.note}
-              </p>
-
-              <button
-                onClick={() => handlePlanSelect(Number(card.price || 0))}
-                disabled={!card.price}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 md:py-3 rounded-full transition transform hover:scale-105 text-xs md:text-sm lg:text-base disabled:opacity-50"
+          <div className="grid grid-cols-2 space-x-2 md:gap-6 max-w-4xl w-full">
+            {(hero?.cards || []).slice(0, 2).map((card, idx) => (
+              <div
+                key={idx}
+                className="bg-black/80 backdrop-blur-md rounded-2xl px-3 py-6 md:px-8 md:py-8 border border-gray-800 hover:border-blue-500 transition-all transform hover:scale-105 hover:shadow-2xl w-full"
               >
-                {card.ctaText || "Get Both Now"}
-              </button>
-            </div>
-          ))}
+                <div className="flex items-center justify-center mb-2 md:mb-4">
+                  <div className="bg-green-700 text-white px-2 md:px-4 py-1 rounded-full text-[10px] md:text-xs lg:text-sm md:font-semibold">
+                    {card.badge}
+                  </div>
+                </div>
+
+                <p className="text-gray-300 mb-2 md:mb-6 text-sm lg:text-base text-center">
+                  {card.description}
+                </p>
+
+                <div className="mb-2 md:mb-6 text-center">
+                  <span className="text-2xl md:text-3xl lg:text-5xl font-bold text-white">
+                    {card.price ? `$${card.price}` : ""}
+                  </span>
+                  <span className="text-xl md:text-2xl align-top">*</span>
+                </div>
+
+                <p className="text-sm md:text-base text-gray-400 mb-2 md:mb-6 text-center">
+                  {card.duration}
+                </p>
+
+                <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-8 text-center">
+                  {card.note}
+                </p>
+
+                <button
+                  onClick={() => handlePlanSelect(Number(card.price || 0))}
+                  disabled={!card.price}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 md:py-3 rounded-full transition transform hover:scale-105 text-xs md:text-sm lg:text-base disabled:opacity-50"
+                >
+                  {card.ctaText || "Get Both Now"}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Animated Background Gradient */}

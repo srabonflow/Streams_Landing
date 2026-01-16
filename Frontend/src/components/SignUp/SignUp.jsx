@@ -34,7 +34,7 @@ const SignUp = ({ setCurrentPage, pricingOption }) => {
       if (result.status === 201) {
         setLoading(false);
         //navigate the url
-        if (pricingOption === 24.66) {
+        if (pricingOption > 20) {
           window.location.href = `https://affshubs.o18a.com/c?o=21820446&m=456&a=${aa}&aff_sub3=${aff_sub3}&tid=${tid}&aff_sub6=${formData?.email}`;
         } else {
           window.location.href = `https://affshubs.o18a.com/c?o=21869158&m=456&a=${aa}&aff_sub3=${aff_sub3}&tid=${tid}&aff_sub6=${formData?.email}`;

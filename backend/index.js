@@ -4,7 +4,10 @@ const app = express();
 const PORT = process.env.PORT;
 const cors = require("cors");
 app.use(cors());
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://watch.streamhubmedia.com",
+];
 app.use(express.json());
 
 const userRoute = require("./routers/user.routers.js");
@@ -19,9 +22,8 @@ app.use(
     origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
-  })
+  }),
 );
-
 
 (async () => {
   try {
